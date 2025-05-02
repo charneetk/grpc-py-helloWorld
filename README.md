@@ -44,4 +44,3 @@ The client will send a HelloRequest with the name "World" and print the server's
 When the client successfully connects to the server, the output should be:
 
 Greeter client received: Hello, World!
-# grpc-py-helloWorld
