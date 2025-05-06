@@ -34,13 +34,29 @@ The server will start and listen on port 50051 for incoming gRPC requests.
 
 # Run the Client
 
-Once the server is running, navigate to the client/ directory and run the client to send a request to the server:
-python client.py
+1.  Create a .env file:
+    You must create a .env file in the root directory of the project to define the required environment variables. The script uses DROOLS_API_URL to communicate with the Drools API.
 
-The client will send a HelloRequest with the name "World" and print the server's response.
+2.  Ensure Drools is Running:
+    This script assumes the Drools API is running at the URL specified in DROOLS_API_URL. Make sure Drools is set up correctly and that it is running on the specified URL
+
+3.  Once the server is running, navigate to the client/ directory and run the client to send a request to the server:
+    python client.py
+
+4.  Input Prompt:
+    The script will prompt you for two inputs:
+
+            Message Text: Enter the message text you want to verify with Drools.
+            Message Status: Enter the status for the message. Valid values are NEW or PROCESSED
+
+5.  Drools API Call:
+    The script will send the provided message text and status to the Drools API for validation. If the rule is verified (i.e., the status returned is PROCESSED), it proceeds to make a gRPC call.
+
+6.  gRPC Call:
+    If the Drools rule is verified successfully, the script proceeds to call a gRPC service (SayHello), passing the message text as the name parameter. The response from the gRPC service is printed.
 
 # Expected Output
 
 When the client successfully connects to the server, the output should be:
 
-Greeter client received: Hello, Codeblock!
+Greeter client received: Hello, <>!
